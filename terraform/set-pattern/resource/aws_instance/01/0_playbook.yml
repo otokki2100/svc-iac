@@ -1,0 +1,20 @@
+---
+- hosts: tag_Name_ec2_01
+  tasks:
+    - yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - java-1.7.0-openjdk-devel
+        - java-1.8.0-openjdk-devel
+        - java-11-openjdk-devel
+      become: true
+      become_method: sudo
+
+    - shell: alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.17.0.8-2.el7_9.x86_64/bin/java
+      become: true
+      become_method: sudo
+
+    - shell: alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.17.0.8-2.el7_9.x86_64/bin/javac
+      become: true
+      become_method: sudo
