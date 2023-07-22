@@ -22,6 +22,6 @@ resource "aws_security_group_rule" "rule_ingress_ssh" {
   from_port         = "1"
   to_port           = "65535"
   protocol          = "tcp"
-  cidr_blocks       = ["211.115.223.215/32", "203.248.23.128/25", "180.69.105.0/24", "180.71.24.0/24"]
+  cidr_blocks       = [var.myips]
   security_group_id = aws_security_group.bastion.id
 }

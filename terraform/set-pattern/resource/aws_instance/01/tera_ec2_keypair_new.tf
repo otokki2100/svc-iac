@@ -10,7 +10,7 @@ resource "local_file" "rsa_key_new_private" {
 }
 
 resource "aws_key_pair" "rsa_keypair_new" {
-  key_name   = "rsa_keypair"
+  key_name   = "rsa-keypair-new"
   public_key = tls_private_key.rsa_key_new.public_key_openssh
   tags = {
     Name = "rsa_keypair-new"
