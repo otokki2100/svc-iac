@@ -1,9 +1,9 @@
 resource "aws_instance" "test" {
-  ami           = "ami-022e1a32d3f742bd8"
+  ami           = "ami-022e1a32d3f742bd8" # amazl-23
   instance_type = "t3.micro"
   key_name      = aws_key_pair.rsa_keypair.key_name
   subnet_id     = aws_subnet.public.id
-  private_ip    = "10.0.10.11"
+  private_ip    = "10.0.11.11"
 
   vpc_security_group_ids = [
     aws_security_group.sg_ec2.id
@@ -34,13 +34,10 @@ resource "aws_instance" "test" {
 
 provider "aws" {}
 
-output "public_ip" {
-  value = aws_instance.test.public_ip
-}
-
 resource "aws_vpc" "vpc" {
   cidr_block           = "10.0.0.0/16"
-  enable_dns_hostnames = "true"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
 
   tags = {
     Name = "vpc"
@@ -57,7 +54,7 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.vpc.id
-  cidr_block              = "10.0.10.0/24"
+  cidr_block              = "10.0.11.0/24"
   availability_zone       = "us-east-1a"
   map_public_ip_on_launch = "true"
 
@@ -109,7 +106,7 @@ resource "aws_security_group_rule" "sg_ec2_rule_ingress_ssh" {
   from_port         = "22"
   to_port           = "22"
   protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = local.myips_list
   security_group_id = aws_security_group.sg_ec2.id
 }
 
