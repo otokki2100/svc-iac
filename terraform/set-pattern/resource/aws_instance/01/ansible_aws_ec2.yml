@@ -7,3 +7,6 @@ filters:
 keyed_groups:
   - key: tags
     prefix: tag
+# compose:
+#   ansible_host: public_dns_name
+# strict: yes
