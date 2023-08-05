@@ -1,0 +1,8 @@
+all:
+  hosts:
+    ec2:
+      ansible_host: 44.212.19.111
+      ansible_connection: ssh
+      ansible_user: centos
+      ansible_ssh_private_key_file: id_rsa
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
