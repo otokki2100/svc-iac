@@ -18,8 +18,8 @@ module "service" {
       cidr_blocks = "${var.myip}/32"
     },
     {
-      from_port   = 80
-      to_port     = 80
+      from_port   = 8080
+      to_port     = 8080
       protocol    = "tcp"
       cidr_blocks = "${var.myip}/32"
     }
