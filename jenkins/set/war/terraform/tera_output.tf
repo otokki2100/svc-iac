@@ -2,6 +2,10 @@ output "domain" {
   value = local.domain
 }
 
+output "jenkins" {
+  value = "${local.domain}:8080/jenkins"
+}
+
 output "vm_info_id" {
   value = module.ec2.id
 }
