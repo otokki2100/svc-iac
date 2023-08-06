@@ -18,6 +18,12 @@ module "service" {
       cidr_blocks = "${var.myip}/32"
     },
     {
+      from_port   = 2222
+      to_port     = 2222
+      protocol    = "tcp"
+      cidr_blocks = "${var.myip}/32"
+    },
+    {
       from_port   = 8080
       to_port     = 8080
       protocol    = "tcp"
