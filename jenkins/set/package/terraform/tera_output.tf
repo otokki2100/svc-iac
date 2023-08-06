@@ -3,7 +3,7 @@ output "domain" {
 }
 
 output "jenkins" {
-  value = "${local.domain}:8080/jenkins"
+  value = "${local.domain}:8080"
 }
 
 output "vm_info_id" {
