@@ -32,6 +32,9 @@
         cmd: sh {{ var.wiki_code_path_remote }}/{{ code }} {{ var.user }} {{ var.dist }} {{ var.domain }}
 
     - ansible.builtin.shell:
+        cmd: sleep 10
+        
+    - ansible.builtin.shell:
         cmd: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
       register: command
 
