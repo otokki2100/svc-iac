@@ -10,7 +10,7 @@ module "ec2" {
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
 
-  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/init-pub/init-${var.ec2.dist}.sh.tpl", {
+  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/os/init-pub/init-${var.ec2.dist}.sh.tpl", {
     user   = var.ec2.user,
     dist   = var.ec2.dist,
     domain = var.ec2.domain,
